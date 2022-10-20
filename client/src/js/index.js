@@ -14,6 +14,8 @@ import Unused from '../images/unused-image.png';
 import { initdb, getDb, postDb, deleteDb, editDb } from './database';
 import { fetchCards } from './cards';
 
+const installBtn = document.getElementById('installBtn');
+
 window.deleteCard = (e) => {
   // Grabs the id from the button element attached to the contact card.
   let id = parseInt(e.id);
@@ -102,3 +104,18 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./service-worker.js');
   })
 };
+
+window.addEventListener('beforeinstallprompt', (event) => {
+  event.preventDefault();
+  installBtn.style.visibility = 'visible';
+
+  installBtn.addEventListener('click', () => {
+    event.prompt();
+    installBtn.setAttribute('disabled', true);
+    installBtn.textContent = 'Installed!';
+  });
+});
+
+window.addEventListener('appinstalled', (event) => {
+  console.log('👍', 'appinstalled', event);
+});
