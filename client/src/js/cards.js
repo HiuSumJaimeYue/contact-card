@@ -7,7 +7,7 @@ export const fetchCards = async () => {
     const result = await getDb();
 
     let cardContent = ` `;
-
+ 
     // Loop through the data and create the contact card
     for (let data of result) {
         console.log(data);
