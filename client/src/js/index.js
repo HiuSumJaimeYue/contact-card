@@ -69,7 +69,7 @@ form.addEventListener('submit', event => {
   }
 
   // Clear form
-  clearForm();
+  clearForm(); 
   // Toggle form
   toggleForm();
   // Reload the DOM
